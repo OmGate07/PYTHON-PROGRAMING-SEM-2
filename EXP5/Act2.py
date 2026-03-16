@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar  9 10:36:52 2026
+
+@author:Om Gate
+"""
 #TAKING INPUT FOR THE FIRST SET
 set1=set(map(int,input("Enter elements of first set (space-separated): ").split()))
 # Taking input for the second set
