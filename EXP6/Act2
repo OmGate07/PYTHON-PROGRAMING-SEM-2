@@ -1,0 +1,48 @@
+# File name
+file_name = "attendance.txt"
+
+# Function to add attendance
+def add_attendance():
+    name = input("Enter student name: ")
+    roll = input("Enter roll number: ")
+    status = input("Enter attendance (Present/Absent): ")
+
+    with open(file_name, "a") as file:
+        file.write(f"{name},{roll},{status}\n")
+
+    print("Attendance record added successfully!\n")
+
+
+# Function to display attendance
+def show_attendance():
+    try:
+        with open(file_name, "r") as file:
+            print("\n--- Attendance Records ---")
+            for line in file:
+                name, roll, status = line.strip().split(",")
+                print(f"Name: {name}, Roll No: {roll}, Status: {status}")
+
+    except FileNotFoundError:
+        print("No attendance file found!")
+
+
+# Menu
+while True:
+    print("\n1. Add Attendance")
+    print("2. Show Attendance")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_attendance()
+
+    elif choice == "2":
+        show_attendance()
+
+    elif choice == "3":
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice! Try again.")
