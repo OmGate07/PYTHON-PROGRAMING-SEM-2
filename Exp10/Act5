@@ -1,0 +1,29 @@
+import random
+
+def play_game():
+    options = ["Rock", "Paper", "Scissors"]
+    
+    print("--- Welcome to Rock, Paper, Scissors! ---")
+    user_choice = input("Enter your choice (Rock, Paper, or Scissors): ").capitalize()
+
+    if user_choice not in options:
+        print("Invalid input! Please check your spelling and try again.")
+        return
+
+    computer_choice = random.choice(options)
+
+    print(f"\nYou chose: {user_choice}")
+    print(f"Computer chose: {computer_choice}")
+
+    # Determine the winner
+    if user_choice == computer_choice:
+        print("It's a tie!")
+    elif (user_choice == "Rock" and computer_choice == "Scissors") or \
+         (user_choice == "Paper" and computer_choice == "Rock") or \
+         (user_choice == "Scissors" and computer_choice == "Paper"):
+        print("🎉 You win!")
+    else:
+        print("💻 Computer wins!")
+
+if __name__ == "__main__":
+    play_game()
