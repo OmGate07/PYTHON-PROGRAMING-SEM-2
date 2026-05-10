@@ -1,0 +1,33 @@
+class Employee:
+    def __init__(self, name, emp_id, basic_salary):
+        self.name = name
+        self.emp_id = emp_id
+        self.basic_salary = basic_salary
+
+    def calculate_bonus(self):
+        if self.basic_salary >= 50000:
+            return 0.20 * self.basic_salary
+        elif self.basic_salary >= 30000:
+            return 0.10 * self.basic_salary
+        else:
+            return 0.05 * self.basic_salary
+
+    def calculate_total_salary(self):
+        return self.basic_salary + self.calculate_bonus()
+
+    def display_details(self):
+        print("\nEmployee Details")
+        print("Name:", self.name)
+        print("Employee ID:", self.emp_id)
+        print("Basic Salary:", self.basic_salary)
+        print("Bonus:", self.calculate_bonus())
+        print("Total Salary:", self.calculate_total_salary())
+
+
+# Example usage
+name = input("Enter employee name: ")
+emp_id = input("Enter employee ID: ")
+basic_salary = float(input("Enter basic salary: "))
+
+emp = Employee(name, emp_id, basic_salary)
+emp.display_details()
