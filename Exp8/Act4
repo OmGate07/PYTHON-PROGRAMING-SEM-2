@@ -1,0 +1,23 @@
+shopping_cart = ["Laptop", "Wireless Mouse", "Keyboard"]
+
+def remove_item():
+    print("\nYour Current Cart:", shopping_cart)
+    print("Indices available: 0 to", len(shopping_cart) - 1)
+    
+    try:
+        index = int(input("Enter the index of the item to remove: "))
+        removed_item = shopping_cart.pop(index)
+        print(f"Success: '{removed_item}' has been removed from your cart.")
+        
+    except IndexError:
+        # Triggers if index is 3, 4, -5, etc.
+        print("Error: That product index does not exist in your cart.")
+        
+    except ValueError:
+        # Triggers if input is 'abc' or 'three'
+        print("Error: Please enter a valid numerical index.")
+
+    finally:
+        print("Final Cart State:", shopping_cart)
+
+remove_item()
