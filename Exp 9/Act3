@@ -1,0 +1,24 @@
+import math
+
+def calculate_distance():
+    print("--- 2D Distance Calculator ---")
+    try:
+        # Input coordinates for Point 1
+        x1 = float(input("Enter x1: "))
+        y1 = float(input("Enter y1: "))
+        
+        # Input coordinates for Point 2
+        x2 = float(input("Enter x2: "))
+        y2 = float(input("Enter y2: "))
+        
+        # Calculate distance using math.sqrt and math.pow
+        # Alternatively, you can use math.dist([x1, y1], [x2, y2]) in Python 3.8+
+        distance = math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
+        
+        print(f"\nThe distance between ({x1}, {y1}) and ({x2}, {y2}) is: {round(distance, 2)}")
+        
+    except ValueError:
+        print("Invalid input. Please enter numeric values.")
+
+if __name__ == "__main__":
+    calculate_distance()
