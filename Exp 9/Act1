@@ -1,0 +1,35 @@
+import math
+
+def calculate_emi():
+    try:
+        # Input loan details
+        P = float(input("Enter principal loan amount: "))
+        annual_rate = float(input("Enter annual interest rate (%): "))
+        years = float(input("Enter tenure in years: "))
+
+        # Conversion
+        # r = monthly interest rate
+        # n = total number of months
+        r = annual_rate / (12 * 100)
+        n = years * 12
+
+        # EMI Formula: P * r * (1 + r)^n / ((1 + r)^n - 1)
+        common_factor = math.pow(1 + r, n)
+        emi = (P * r * common_factor) / (common_factor - 1)
+
+        total_payment = emi * n
+        total_interest = total_payment - P
+
+        # Display results
+        print(f"\n--- EMI Calculation Results ---")
+        print(f"Monthly EMI: {round(emi, 2)}")
+        print(f"Total Interest: {round(total_interest, 2)}")
+        print(f"Total Amount Payable: {round(total_payment, 2)}")
+
+    except ValueError:
+        print("Error: Please enter valid numeric values.")
+    except ZeroDivisionError:
+        print("Error: Interest rate or tenure cannot be zero.")
+
+if __name__ == "__main__":
+    calculate_emi()
