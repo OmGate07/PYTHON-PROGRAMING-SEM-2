@@ -1,0 +1,51 @@
+import streamlit as st
+
+# Set page title
+st.set_page_config(page_title="Grocery Bill Calculator")
+
+st.title("🛒 Grocery Bill Calculator")
+
+# Initialize session state for the shopping cart
+if 'cart' not in st.session_state:
+    st.session_state.cart = []
+
+# --- Sidebar: Input Section ---
+st.sidebar.header("Add New Item")
+item_name = st.sidebar.text_input("Item Name", placeholder="e.g. Milk")
+item_price = st.sidebar.number_input("Price per unit", min_value=0.0, step=0.5)
+item_qty = st.sidebar.number_input("Quantity", min_value=1, step=1)
+
+if st.sidebar.button("Add to Cart"):
+    if item_name:
+        # Add item details to our session state list
+        st.session_state.cart.append({
+            "Item": item_name,
+            "Price": item_price,
+            "Qty": item_qty,
+            "Total": item_price * item_qty
+        })
+        st.success(f"Added {item_name}!")
+    else:
+        st.error("Please enter an item name.")
+
+# --- Main Area: Display Bill ---
+if st.session_state.cart:
+    st.header("Your Bill")
+    
+    # Display the cart as a table
+    st.table(st.session_state.cart)
+    
+    # Calculate Grand Total
+    grand_total = sum(item['Total'] for item in st.session_state.cart)
+    
+    st.subheader(f"Grand Total: ${grand_total:.2f}")
+    
+    # Option to clear the cart
+    if st.button("Clear Cart"):
+        st.session_state.cart = []
+        st.rerun()
+else:
+    st.info("Your cart is empty. Use the sidebar to add items!")
+
+st.markdown("---")
+st.caption("Powered by Streamlit")
