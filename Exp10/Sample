@@ -1,27 +1,22 @@
-class Employee:
-    def __init__(self, name, emp_id, basic_salary):
-        self.name = name
-        self.emp_id = emp_id
-        self.basic_salary = basic_salary
+import streamlit as st
 
-    def calculate_gross_salary(self):
-        # Let's assume some standard allowances
-        hra = 0.2 * self.basic_salary  # House Rent Allowance 20%
-        da = 0.1 * self.basic_salary   # Dearness Allowance 10%
-        gross_salary = self.basic_salary + hra + da
-        return gross_salary
+# Title and header
+st.title("Simple Streamlit Application")
+st.header("User Input and Display Demo")
 
-    def display_details(self):
-        print(f"Employee Name: {self.name}")
-        print(f"Employee ID: {self.emp_id}")
-        print(f"Basic Salary: {self.basic_salary}")
-        print(f"Gross Salary: {self.calculate_gross_salary()}")
+# User input widgets
+name = st.text_input("Enter your name:")
+age = st.number_input("Enter your age:", min_value=1, max_value=100)
+color = st.selectbox("Choose your favorite color:", ["Red", "Blue", "Green"])
 
-# Example usage
-name = input("Enter employee name: ")
-emp_id = input("Enter employee ID: ")
-basic_salary = float(input("Enter basic salary: "))
+# Button
+if st.button("Submit"):
+    st.success("Data submitted successfully!")
 
-emp = Employee(name, emp_id, basic_salary)
-print("\nEmployee Details:")
-emp.display_details()
+# Display text and markdown
+st.write("Name:", name)
+st.write("Age:", age)
+st.write("Favorite Color:", color)
+
+st.markdown("### This is a Markdown heading")
+st.text("This is plain text output")
