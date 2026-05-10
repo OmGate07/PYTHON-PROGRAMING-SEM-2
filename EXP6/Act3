@@ -1,0 +1,17 @@
+# File name
+file_name = "complaints.txt"
+
+# Function to display complaints
+def read_complaints():
+    try:
+        with open(file_name, "r") as file:
+            print("\n--- All Complaints ---")
+            for line in file:
+                print(line.strip())
+
+    except FileNotFoundError:
+        print("Complaint file not found!")
+
+
+# Run function
+read_complaints()
