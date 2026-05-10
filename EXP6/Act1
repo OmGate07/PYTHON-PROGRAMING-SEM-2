@@ -1,0 +1,51 @@
+# File name
+file_name = "expenses.txt"
+
+# Step 1: Add daily expenses
+def add_expense():
+    date = input("Enter date (DD-MM-YYYY): ")
+    amount = float(input("Enter expense amount: "))
+
+    with open(file_name, "a") as file:
+        file.write(f"{date},{amount}\n")
+
+    print("Expense added successfully!\n")
+
+
+# Step 2: Calculate total monthly expense
+def calculate_total():
+    total = 0.0
+
+    try:
+        with open(file_name, "r") as file:
+            for line in file:
+                data = line.strip().split(",")
+                if len(data) == 2:
+                    total += float(data[1])
+
+        print(f"\nTotal Monthly Expense = {total}")
+
+    except FileNotFoundError:
+        print("No expense file found!")
+
+
+# Menu
+while True:
+    print("\n1. Add Expense")
+    print("2. Calculate Total Monthly Expense")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_expense()
+
+    elif choice == "2":
+        calculate_total()
+
+    elif choice == "3":
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice! Try again.")
