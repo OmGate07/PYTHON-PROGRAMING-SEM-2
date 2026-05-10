@@ -1,0 +1,18 @@
+import random
+import string
+
+def generate_numeric_otp(length=6):
+    # Method 1: String of digits
+    digits = "0123456789"
+    otp = "".join(random.choice(digits) for i in range(length))
+    return otp
+
+def generate_alphanumeric_otp(length=6):
+    # Method 2: Mix of letters and numbers
+    characters = string.ascii_letters + string.digits
+    otp = "".join(random.choice(characters) for i in range(length))
+    return otp
+
+# --- Execution ---
+print("Your Numeric OTP:", generate_numeric_otp())
+print("Your Alphanumeric OTP:", generate_alphanumeric_otp())
