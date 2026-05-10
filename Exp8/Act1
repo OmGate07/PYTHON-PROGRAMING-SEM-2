@@ -1,0 +1,27 @@
+class InsufficientBalanceError(Exception):
+    """Custom exception for ATM balance issues."""
+    pass
+
+class ATM:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+        try:
+            print(f"\nAttempting to withdraw: ${amount}")
+            if amount > self.balance:
+                raise InsufficientBalanceError("Error: You do not have enough funds.")
+            
+            self.balance -= amount
+            print(f"Withdrawal Successful! New Balance: ${self.balance}")
+            
+        except InsufficientBalanceError as e:
+            print(e)
+        finally:
+            print("Transaction attempt finished.")
+
+# Example Usage
+my_account = ATM(500)  # Initial balance of $500
+
+my_account.withdraw(200)  # Should work
+my_account.withdraw(400)  # Should trigger the error
