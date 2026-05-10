@@ -1,0 +1,21 @@
+def register_user():
+    print("--- User Registration ---")
+    try:
+        # 1. Capture and convert input
+        age = int(input("Please enter your age: "))
+
+        # 2. Logical validation
+        if age < 0:
+            print("Error: Age cannot be negative.")
+        elif age < 18:
+            print("Access Denied: You must be at least 18 years old.")
+        elif age > 120:
+            print("Error: Please enter a valid human age.")
+        else:
+            print(f"Registration successful! Age {age} is verified.")
+
+    except ValueError:
+        # Catches cases where the user types 'abc' instead of '25'
+        print("Error: Invalid input. Please enter a whole number.")
+
+register_user()
